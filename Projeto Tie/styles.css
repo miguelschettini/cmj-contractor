@@ -6,11 +6,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
     margin: 0;
-    position: relative;
-    background-color: transparent;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -475,6 +472,118 @@ footer {
     width: 100%;
 }
 
+#project-hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;                  /* <--- novo */
+    align-items: flex-end;          /* texto no fundo */
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 0 5% 10% 5%;           /* padding interno: laterais 5%, fundo 10% */
+    box-sizing: border-box;
+}
+
+.hero-content {
+    color: white;
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-family: "EB Garamond", serif;
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 0 0 0.4rem 0;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+}
+
+.project-meta {
+    font-size: 1.4rem;
+    opacity: 0.95;
+    margin: 0 0 1.2rem 0;
+    letter-spacing: 1px;
+}
+
+.project-desc {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    max-width: 680px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    margin: 0;
+}
+
+/* Galeria do projeto */
+#project-gallery {
+    padding: 5rem 2rem;
+    background: #f8f8f8;
+}
+
+#project-gallery h2 {
+    font-family: "EB Garamond", serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #222;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.gallery-item {
+    flex: 1 1 400px;           /* base ~400px, cresce e encolhe */
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 /* Responsividade */
 /* Responsividade Geral para Celulares (Telas até 768px) */
 @media (max-width: 768px) {
@@ -554,5 +663,40 @@ footer {
         left: 5%;
         width: 90%;
         top: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    #project-hero {
+        height: 100vh;            /* um pouco menor no mobile para não cortar demais */
+        margin-left: -50vw;
+        margin-right: -50vw;
+        left: 50%;
+    }
+
+    .hero-overlay {
+        padding: 0 6% 12% 6%;       /* mais espaço em baixo no celular */
+    }
+    
+    .hero-content h1 {
+        font-size: 3.2rem;          /* menor para caber bem */
+        line-height: 1.1;
+    }
+
+    .project-meta {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        bottom: 8%;
+        left: 4%;
+        right: 4%;
+    }
+    #project-gallery {
+        padding: 3rem 1rem;
+    }
+
+    .project-desc {
+        font-size: 1rem;
     }
 }
